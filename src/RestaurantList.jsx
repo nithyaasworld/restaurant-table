@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 export default function RestaurantList({ listOfRestaurants }) {
     let [currStartRange, setCurrStartRange] = useState(0);
@@ -25,30 +25,17 @@ export default function RestaurantList({ listOfRestaurants }) {
                 setCurrStartRange(newStartRange);
                 setCurrEndRange(newStartRange + 10);
             } else {
-                //Need to fix this part//
+                let newStartRange = currEndRange;
+                setCurrStartRange(newStartRange);
                 setCurrEndRange(listOfRestaurants.length);
             }
         }
     }
-    useEffect(() => {
-        console.log({ currStartRange, currEndRange });
-        console.log(listOfRestaurants.length);
-        if (currStartRange === 0) {
-            prevBtnRef.current.classList.add('disabled');
-        } else {
-            prevBtnRef.current.classList.remove('disabled');
-        }
-        if (currEndRange >= listOfRestaurants.length) {
-            nextBtnRef.current.classList.add('disabled');
-        } else {
-            nextBtnRef.current.classList.remove('disabled');
-        } 
-    }, [currStartRange])
-
+ 
   return (
     <div className="main-container">
       <div className="restaurant-list-container">
-        {listOfRestaurants.length > 0  &&
+        {listOfRestaurants && listOfRestaurants.length > 0  &&
           listOfRestaurants.slice(currStartRange, currEndRange).map((restaurant) => (
               <RestaurantCard
                   key={restaurant.id}
@@ -61,8 +48,11 @@ export default function RestaurantList({ listOfRestaurants }) {
           ))}
       </div>
       <nav>
-        <div ref={prevBtnRef} onClick={prevBtnFunction} className="page-nav-btn previous-btn">Prev</div>
-        <div ref={nextBtnRef} onClick={nextBtnFunction} className="page-nav-btn next-btn ">Next</div>
+              <div ref={prevBtnRef}
+                  onClick={prevBtnFunction}
+                  className={`page-nav-btn previous-btn ${currStartRange === 0 ? 'disabled' : ''}`}
+                  >Prev</div>
+        <div ref={nextBtnRef} onClick={nextBtnFunction} className={`page-nav-btn next-btn  ${listOfRestaurants.length === currEndRange ? 'disabled' : ''} `}>Next</div>
       </nav>
     </div>
   );

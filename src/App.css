@@ -32,3 +32,8 @@ nav{
   pointer-events: none;
   opacity: 0.3;
 }
+.App{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
