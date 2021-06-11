@@ -29,7 +29,7 @@ export default function RestaurantList({ listOfRestaurants }) {
                 setCurrStartRange(newStartRange);
                 setCurrEndRange(listOfRestaurants.length);
             }
-        }
+        } 
     }
  
   return (
