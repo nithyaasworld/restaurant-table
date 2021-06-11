@@ -43,7 +43,7 @@ export default function RestaurantList({ listOfRestaurants }) {
               city={restaurant.city}
               state={restaurant.state}
               phone={restaurant.telephone}
-              genres={restaurant.genre}
+              genres={restaurant.genre.split(',').join(', ')}
             />
           ))}
       </div>

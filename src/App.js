@@ -79,6 +79,7 @@ function App() {
   }, [searchText]);
   return (
     <div className="App">
+      <h1>List of Restaurants</h1>
       <FilterByGenres listOfGenres={listOfGenres} setCurrGenre={setCurrGenre} />
       <Search setSearchText={setSearchText} />
       <RestaurantList listOfRestaurants={filteredRestaurants} />
