@@ -1,7 +1,7 @@
 /* Table Styles */
 .restaurant-list-container{
   border: 2px solid rgb(219, 212, 212);
-  align-self: flex-start;
+  /* align-self: flex-start; */
   width: max-content;
   padding: 1em;
   border-radius: 1em;
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   border-right: 2px solid rgb(219, 212, 212);
-  align-self: flex-start;
+  /* align-self: flex-start; */
 }
 
 .restaurant-city, .restaurant-phone-number {
