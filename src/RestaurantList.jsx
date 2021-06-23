@@ -1,11 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 export default function RestaurantList({ listOfRestaurants }) {
     let [currStartRange, setCurrStartRange] = useState(0);
-    let [currEndRange, setCurrEndRange] = useState(10);
+    let [currEndRange, setCurrEndRange] = useState(listOfRestaurants.length >= 10 ? 10 : listOfRestaurants.length);
 
     let nextBtnRef = useRef();
-    let prevBtnRef = useRef();
+  let prevBtnRef = useRef();
+  
+  useEffect(() => {
+    setCurrStartRange(0);
+    setCurrEndRange(listOfRestaurants.length >= 10 ? 10 : listOfRestaurants.length);
+  }, [listOfRestaurants]);
 
     const prevBtnFunction = () => {
         console.log("prev btn presesed");

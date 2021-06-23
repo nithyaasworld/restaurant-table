@@ -1,5 +1,4 @@
 export default function FilterByGenres({ listOfGenres, setCurrGenre }) {
-
   return (
     <div className="genres-filter">
       <label htmlFor="genre-list">Genre List</label>
